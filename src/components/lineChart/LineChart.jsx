@@ -7,6 +7,7 @@ import {
   LineElement,
   PointElement,
   Title,
+  Filler,
   Tooltip,
 } from "chart.js";
 import React, { useEffect, useState } from "react";
@@ -65,7 +66,8 @@ const LineChart = ({ city, date, type }) => {
     PointElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
   );
 
   const labels = dayData.map((item) => item.time);
@@ -105,6 +107,7 @@ const LineChart = ({ city, date, type }) => {
     responsive: true,
     scales: {
       x: {
+        display: false,
         title: {
           display: false, // Ẩn tiêu đề trục X
         },
@@ -116,6 +119,7 @@ const LineChart = ({ city, date, type }) => {
         },
       },
       y: {
+        display: false,
         title: {
           display: false, // Ẩn tiêu đề trục Y
         },
