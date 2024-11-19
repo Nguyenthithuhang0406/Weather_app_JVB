@@ -133,6 +133,7 @@ const Home = () => {
                 city={city}
                 type={type}
                 date={date}
+                isRefresh={isRefresh}
                 className="chart-body"
               />
             </div>

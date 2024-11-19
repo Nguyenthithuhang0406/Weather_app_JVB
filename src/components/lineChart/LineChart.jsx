@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { getWeather } from "../../API/getWeather";
 
-const LineChart = ({ city, date, type }) => {
+const LineChart = ({ city, date, type, isRefresh }) => {
   const [dayData, setDayData] = useState([]);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const LineChart = ({ city, date, type }) => {
     };
 
     filterData();
-  }, [city, date, type]);
+  }, [isRefresh, date, type]);
 
   Chart.register(
     CategoryScale,
@@ -98,7 +98,7 @@ const LineChart = ({ city, date, type }) => {
             ? "rgb(241, 223, 137)"
             : "rgba(185, 235, 143, 0.2)"
         }`,
-        tension: 0.1,
+        tension: 0.5,
       },
     ],
   };

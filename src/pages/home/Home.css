@@ -12,7 +12,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  width: 75%;
+  width: 80%;
   max-width: 64rem;
   /* height: 40rem; */
 }
@@ -61,11 +61,12 @@
   margin-bottom: 1rem;
 }
 
-.custom-body-left{
+.custom-body-left {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .custom-days-text {
   color: #4b5563;
 }
@@ -116,14 +117,14 @@
 }
 
 .custom-body-right {
-  width: 60% ;
+  width: 65%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
 
-.select-type{
+.select-type {
   margin-top: -2.5rem;
   width: 8rem;
   height: 2rem;
@@ -131,9 +132,10 @@
   border-radius: 4px;
 }
 
-.select-type:focus{
+.select-type:focus {
   outline: none;
 }
+
 .custom-title {
   color: #4b5563;
   margin-bottom: 0.5rem;
@@ -182,6 +184,16 @@
 
 .day-text {
   text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.day-text:hover {
+  background-color: #a2c4fb;
+  color: white;
 }
 
 .today {
@@ -213,6 +225,6 @@
   font-size: 2rem;
 }
 
-.weather-dayDV{
+.weather-dayDV {
   font-size: 1.125rem;
 }
