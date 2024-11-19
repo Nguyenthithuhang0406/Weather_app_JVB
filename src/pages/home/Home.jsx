@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import { getWeather } from "../../API/getWeather";
 
 import "./Home.css";
+import LineChart from "../../components/lineChart/LineChart";
 const Home = () => {
   const [city, setCity] = useState("Hà Nội"); // Mặc định là Hà Nội
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isRefresh, setIsRefresh] = useState(false);
+  const [type, setType] = useState("temp");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
 
   useEffect(() => {
     const fetchWeather = async (city) => {
@@ -39,7 +42,11 @@ const Home = () => {
       setCity(e.target.value);
       setIsRefresh(!isRefresh);
     }
-  }
+  };
+
+  const handleChangeType = (e) => {
+    setType(e.target.value);
+  };
   return (
     <div className="custom-container">
       <div className="custom-box">
@@ -66,7 +73,7 @@ const Home = () => {
         </div>
 
         <div className="custom-days-flex">
-          <div>
+          <div className="custom-body-left">
             <p className="custom-days-text">
               {new Date(weather.location.localtime).toLocaleString("en-US", {
                 hour: "2-digit",
@@ -115,31 +122,19 @@ const Home = () => {
           </div>
 
           <div className="custom-body-right">
-            <p className="custom-title">Temperature</p>
+            {/* <p className="custom-title">Temperature</p> */}
+            <select name="type" onChange={(e) => handleChangeType(e)} className="select-type">
+              <option value="temp">Temperature</option>
+              <option value="uv">UV</option>
+              <option value="humidity">Humidity</option>
+            </select>
             <div className="custom-chart">
-              <div className="custom-chart-top">
-                <svg
-                  className="chart-body"
-                  viewBox="0 0 100 40"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,30 Q20,20 40,25 T80,15 T100,20"
-                    fill="none"
-                    stroke="#3b82f6"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M0,30 Q20,20 40,25 T80,15 T100,20 L100,40 L0,40 Z"
-                    fill="rgba(59, 130, 246, 0.2)"
-                  />
-                </svg>
-              </div>
-              <div className="custom-templateF">
-                <div className="templateF-title">
-                  <p className="templateF-text">{weather.current.temp_f}°F</p>
-                </div>
-              </div>
+              <LineChart
+                city={city}
+                type={type}
+                date={date}
+                className="chart-body"
+              />
             </div>
             <div className="custom-listDay-temp">
               {weather.forecast.forecastday.map((day, index) => (
@@ -164,7 +159,7 @@ const Home = () => {
                     src={day.day.condition.icon}
                     alt="weather icon"
                   />
-                  <p>{day.day.condition.text }</p>
+                  <p>{day.day.condition.text}</p>
                   <p className="weather-dayDV">{day.day.avghumidity}%</p>
                 </div>
               ))}

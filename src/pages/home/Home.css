@@ -14,6 +14,7 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   width: 75%;
   max-width: 64rem;
+  /* height: 40rem; */
 }
 
 .custom-flex-container {
@@ -26,7 +27,7 @@
 .custom-flex {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .custom-text {
@@ -60,6 +61,11 @@
   margin-bottom: 1rem;
 }
 
+.custom-body-left{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .custom-days-text {
   color: #4b5563;
 }
@@ -67,7 +73,7 @@
 .custom-days-image {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .custom-image {
@@ -110,9 +116,24 @@
 }
 
 .custom-body-right {
-  width: 60%;
+  width: 60% ;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+
+.select-type{
+  margin-top: -2.5rem;
+  width: 8rem;
+  height: 2rem;
+  padding-left: 1rem;
+  border-radius: 4px;
+}
+
+.select-type:focus{
+  outline: none;
+}
 .custom-title {
   color: #4b5563;
   margin-bottom: 0.5rem;
