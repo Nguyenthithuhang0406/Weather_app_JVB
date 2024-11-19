@@ -1,9 +1,14 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { getWeather } from "../../API/getWeather";
+import { motion } from "framer-motion";
 
-import "./Home.css";
 import LineChart from "../../components/lineChart/LineChart";
+import { useDispatch } from "react-redux";
+import { setDataWeather } from "../../store/Slice";
+import ModalWeather from "../../components/modalWeather/ModalWeather";
+import "./Home.css";
+
 const Home = () => {
   const [city, setCity] = useState("Hà Nội"); // Mặc định là Hà Nội
   const [weather, setWeather] = useState(null);
@@ -12,13 +17,16 @@ const Home = () => {
   const [isRefresh, setIsRefresh] = useState(false);
   const [type, setType] = useState("temp");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [showModal, setShowModal] = useState(false);
 
+  const dispath = useDispatch();
   useEffect(() => {
     const fetchWeather = async (city) => {
       setLoading(true);
       try {
         const response = await getWeather(city);
         setWeather(response);
+        dispath(setDataWeather(response));
       } catch (err) {
         setError("Không thể lấy dữ liệu thời tiết.");
       } finally {
@@ -47,6 +55,21 @@ const Home = () => {
   const handleChangeType = (e) => {
     setType(e.target.value);
   };
+
+  const handleClickDup = (dateClick) => {
+    setShowModal(true);
+    setDate(dateClick);
+  };
+
+  const handleCancelModal = () => {
+    setShowModal(false);
+    setDate(new Date().toISOString().slice(0, 10));
+  };
+
+  // const handleClickDay = (date) => {
+  //   setDate(date);
+  // };
+
   return (
     <div className="custom-container">
       <div className="custom-box">
@@ -123,7 +146,11 @@ const Home = () => {
 
           <div className="custom-body-right">
             {/* <p className="custom-title">Temperature</p> */}
-            <select name="type" onChange={(e) => handleChangeType(e)} className="select-type">
+            <select
+              name="type"
+              onChange={(e) => handleChangeType(e)}
+              className="select-type"
+            >
               <option value="temp">Temperature</option>
               <option value="uv">UV</option>
               <option value="humidity">Humidity</option>
@@ -142,6 +169,8 @@ const Home = () => {
                 <div
                   key={day.date}
                   className={`day-text ${index === 0 ? "today" : ""}`}
+                  onDoubleClick={() => handleClickDup(day.date)}
+                  // onClick={() => handleClickDay(day.date)}
                 >
                   <p
                     className={`day-p ${
@@ -168,6 +197,20 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div className="overlay" onClick={handleCancelModal}>
+          <motion.div
+            // className="itemDelete"
+            onClick={(e) => e.stopPropagation()}
+            animate={{ opacity: 1, scal: 1 }}
+            initial={{ opacity: 0, scal: 0.5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ModalWeather date={date} onCancel={handleCancelModal} />
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

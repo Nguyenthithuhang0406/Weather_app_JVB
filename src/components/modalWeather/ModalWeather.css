@@ -1,0 +1,85 @@
+.modal-container {
+  width: 40rem;
+  height: 50rem;
+  background-color: rgb(149, 199, 246);
+  border-radius: 8px;
+}
+
+.modal-header {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: rgb(87, 87, 251);
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header .modal-title {
+  font-size: 1.125rem;
+  color: aliceblue;
+  font-weight: 700;
+}
+
+.modal-header img {
+  width: 1.5rem;
+  cursor: pointer;
+  height: 1.5rem;
+}
+
+.modal-top {
+  width: 100%;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(184, 217, 248);
+}
+
+.modal-top img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.condition-item {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  margin-top: 1rem;
+  gap: 1rem;
+  font-size: 1.125rem;
+}
+
+.modal-body {
+  max-height: 34rem;
+  overflow: auto;
+}
+
+.item-hour {
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.item-hour .hour{
+  font-size: 1.125rem;
+  width: 6rem;
+}
+.item-hour img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.item-hour .description {
+  width: 10rem;
+  font-size: 1.125rem;
+}
+
+.item-hour .temp {
+  font-size: 1.125rem;
+  width: 5rem;
+}
