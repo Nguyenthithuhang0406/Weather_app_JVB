@@ -1,0 +1,197 @@
+.custom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.custom-box {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 75%;
+  max-width: 64rem;
+}
+
+.custom-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.custom-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.custom-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-right: 1rem;
+}
+
+.custom-input {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  appearance: none;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  color: #4a5568;
+  line-height: 1.25;
+  outline: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.custom-days-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.custom-days-text {
+  color: #4b5563;
+}
+
+.custom-days-image {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.custom-image {
+  font-family: 'Font Awesome 5 Free', sans-serif;
+  font-weight: 900;
+  content: "\f0c2";
+  font-size: 10rem;
+  color: #4b5563;
+}
+
+.custom-temp {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.custom-condition {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-top: 0.5rem;
+}
+
+.custom-hum_wind {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.custom-hum {
+  margin-right: 1.5rem;
+}
+
+.custom-name {
+  color: #4b5563;
+}
+
+.custom-dv {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.custom-body-right {
+  width: 60%;
+}
+
+.custom-title {
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.custom-chart {
+  position: relative;
+}
+
+.custom-chart-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.chart-body {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-templateF {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.templateF-title {
+  text-align: center;
+}
+
+.templateF-text {
+  color: #3b82f6;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.custom-listDay-temp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.day-text {
+  text-align: center;
+}
+
+.today {
+  background-color: #3b82f6;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.day-p {
+  font-weight: 700;
+}
+
+.day-p_while {
+  color: white;
+}
+
+.day-p_black {
+  color: black;
+}
+
+.weather-icon {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+  content: "\f0c2";
+  font-size: 2rem;
+}
+
+.weather-dayDV{
+  font-size: 1.125rem;
+}
