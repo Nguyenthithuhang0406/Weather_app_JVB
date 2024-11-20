@@ -18,6 +18,7 @@ const Home = () => {
   const [type, setType] = useState("temp");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [showModal, setShowModal] = useState(false);
+  const [time, setTime] = useState();
 
   const dispath = useDispatch();
   useEffect(() => {
@@ -36,6 +37,20 @@ const Home = () => {
 
     fetchWeather(city);
   }, [isRefresh]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(
+        new Date().toLocaleString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "Asia/Ho_Chi_Minh",
+        })
+      );
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Hàm xử lý thay đổi ô input thành phố
   const handleCityChange = (e) => {
@@ -66,9 +81,10 @@ const Home = () => {
     setDate(new Date().toISOString().slice(0, 10));
   };
 
-  // const handleClickDay = (date) => {
-  //   setDate(date);
-  // };
+  //click để biểu đồ thay đổi
+  const handleClickDay = (date) => {
+    setDate(date);
+  };
 
   return (
     <div className="custom-container">
@@ -98,13 +114,13 @@ const Home = () => {
         <div className="custom-days-flex">
           <div className="custom-body-left">
             <p className="custom-days-text">
-              {new Date(weather.location.localtime).toLocaleString("en-US", {
+              {/* {new Date(weather.location.localtime).toLocaleString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
                 hour12: true,
                 timeZone: "Asia/Ho_Chi_Minh", // Chỉnh lại múi giờ Việt Nam
-              })}
-              ,{" "}
+              })} */}
+              {time},
               {new Date(weather.location.localtime).toLocaleString("en-US", {
                 weekday: "short",
                 timeZone: "Asia/Ho_Chi_Minh",
@@ -170,7 +186,8 @@ const Home = () => {
                   key={day.date}
                   className={`day-text ${index === 0 ? "today" : ""}`}
                   onDoubleClick={() => handleClickDup(day.date)}
-                  // onClick={() => handleClickDay(day.date)}
+                  //click vào biểu đồ sẽ thay đổi theo
+                  onClick={() => handleClickDay(day.date)}
                 >
                   <p
                     className={`day-p ${
