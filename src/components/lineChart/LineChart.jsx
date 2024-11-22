@@ -12,16 +12,17 @@ import {
 } from "chart.js";
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { getWeather } from "../../API/getWeather";
+import { useSelector } from "react-redux";
 
 const LineChart = ({ city, date, type, isRefresh }) => {
   const [dayData, setDayData] = useState([]);
+  const weather = useSelector((state) => state.weather);
 
   useEffect(() => {
     const filterData = async () => {
       try {
-        const datas = await getWeather(city);
-
+        const datas = weather.dataWeather;
+        console.log("datas", datas);
         const dataDate = datas?.forecast?.forecastday?.find(
           (item) => item.date === date
         );

@@ -10,7 +10,7 @@ import ModalWeather from "../../components/modalWeather/ModalWeather";
 import "./Home.css";
 
 const Home = () => {
-  const [city, setCity] = useState("Hà Nội"); // Mặc định là Hà Nội
+  const [city, setCity] = useState("Hanoi"); // Mặc định là Hà Nội
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -57,8 +57,28 @@ const Home = () => {
     setCity(e.target.value);
   };
 
+  const handleClickBack = () => {
+    setError(null);
+    setCity("Hanoi");
+  };
+
   if (loading) return <p>Đang tải dữ liệu...</p>;
-  if (error) return <p>{error}</p>;
+  if (error)
+    return (
+      <p>
+        {error}{" "}
+        <span
+          style={{
+            textDecoration: "underline",
+            color: "blue",
+            cursor: "pointer",
+          }}
+          onClick={handleClickBack}
+        >
+          Quay lại
+        </span>
+      </p>
+    );
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
